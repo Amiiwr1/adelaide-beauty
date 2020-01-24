@@ -1,0 +1,18 @@
+header.mdl-layout__header.mdl-layout__header--scroll {
+  background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
+  box-shadow: 0 5px 25px 0 rgba(244, 244, 244, 0.1);
+  color: black;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+  color: black;
+}
+
+body {
+  background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
+
+}
+
+body > div > div > div > div.mdl-layout__drawer-button > i{
+  color: black;
+}

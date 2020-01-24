@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static "/home/styles.css" %}">
+{% endblock %}
+{% block content %}
+  <div class="home-wrapper">
+    <div class="home-header">
+      <div class="home-header-text">
+        <h1>Adelaide Beauty</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, Dictum varius duis at consectetur. </p>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          Learn more
+        </button>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

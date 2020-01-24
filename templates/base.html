@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>Adelaide Beauty</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% block css %}
+    {% include 'base/css.html' %}
+  {% endblock %}
+</head>
+<body>
+<div class="base-wrapper">
+  <div class="mdl-layout mdl-js-layout">
+    {% include 'includes/navbar.html' with brand_name='Adelaide Beauty' %}
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        {% block content %}
+
+
+
+        {% endblock %}
+      </div>
+    </main>
+  </div>
+  {% block js %}
+    {% include 'base/js.html' %}
+  {% endblock %}
+</div>
+</body>
+
+</html>
