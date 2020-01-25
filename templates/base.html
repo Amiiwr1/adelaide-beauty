@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="{{ setting.language }}">
 <head>
   <title>Adelaide Beauty</title>
   <meta charset="UTF-8">
@@ -23,6 +23,7 @@
         {% endblock %}
       </div>
     </main>
+    {% include 'includes/mega-footer.html' %}
   </div>
   {% block js %}
     {% include 'base/js.html' %}

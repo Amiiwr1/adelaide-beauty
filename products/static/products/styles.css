@@ -1,0 +1,85 @@
+.mdl-layout__content {
+  background-color: white;
+}
+
+
+.divider { /* minor cosmetics */
+  display: table;
+  font-size: 24px;
+  text-align: center;
+  width: 70%; /* divider width */
+  margin: 40px auto; /* spacing above/below */
+}
+
+.divider span {
+  display: table-cell;
+  position: relative;
+}
+
+.divider span:first-child, .divider span:last-child {
+  width: 50%;
+  top: 13px; /* adjust vertical align */
+  -moz-background-size: 100% 2px; /* line width */
+  background-size: 100% 2px; /* line width */
+  background-position: 0 0, 0 100%;
+  background-repeat: no-repeat;
+}
+
+.divider span:first-child { /* color changes in here */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9ef9ff), to(#ffc9ff));
+  background-image: -webkit-linear-gradient(to right, #9ef9ff, #ffc9ff);
+  background-image: -moz-linear-gradient(to right, #9ef9ff, #ffc9ff);
+  background-image: -o-linear-gradient(to right, #9ef9ff, #ffc9ff);
+  background-image: linear-gradient(to right, #9ef9ff, #ffc9ff);
+}
+
+.divider span:nth-child(2) {
+  color: #000;
+  padding: 0 5px;
+  width: auto;
+  white-space: nowrap;
+}
+
+.divider span:last-child { /* color changes in here */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9ef9ff), to(#ffc9ff));
+  background-image: -webkit-linear-gradient(to left, #9ef9ff, #ffc9ff);
+  background-image: -moz-linear-gradient(to left, #9ef9ff, #ffc9ff);
+  background-image: -o-linear-gradient(to left, #9ef9ff, #ffc9ff);
+  background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
+}
+
+.side-menu {
+  height: 760px;
+}
+
+.all-products {
+  width: 100%;
+}
+
+.first-filter, .second-filter, .third-filter, .fourth-filter {
+  height: 300px;
+  margin: 40px auto;
+  width: 80%;
+  background-image: linear-gradient(to bottom, #9ef9ff, #ffc9ff);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .1);
+
+}
+
+.first-filter h4, .second-filter h4, .third-filter h4, .fourth-filter h4 {
+  text-align: center;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2);
+  background: ghostwhite;
+  font-size: 1.3rem;
+}
+
+
+@media screen and (max-width: 480px) {
+  .mdl-cell--6-col-desktop, .mdl-cell--4-col-phone, .mdl-cell--4-col-tablet{
+    margin: auto;
+  }
+  .side-menu{
+    height: 1460px;
+  }
+
+}
+

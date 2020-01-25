@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static "/products/styles.css" %}">
+{% endblock %}
+{% block content %}
+  <div class="product-wrapper">
+  <div class="side-menu">
+  <div class="mdl-grid side-menu-filters">
+    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+      <div class="first-filter">
+        <h4>first filter</h4>
+
+      </div>
+      <div class="second-filter">
+        <h4>second filter</h4>
+
+      </div>
+    </div>
+    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+      <div class="third-filter">
+        <h4>third filter</h4>
+      </div>
+      <div class="fourth-filter">
+        <h4>fourth filter</h4>
+      </div>
+    </div>
+
+    </div>
+  </div>
+    <div class="all-products">
+      <div class="divider"><span></span><span>{% trans "All Products" %}</span><span></span></div>
+      <div class="mdl-grid all-product-list">
+        {% for product in product_list %}
+          <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+
+            {% include "products/snippets/card.html" with instance=product %}
+
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

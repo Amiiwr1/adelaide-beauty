@@ -13,6 +13,19 @@ body {
 
 }
 
-body > div > div > div > div.mdl-layout__drawer-button > i{
+body > div > div > div > div.mdl-layout__drawer-button > i {
   color: black;
+}
+
+.mdl-mega-footer--heading, .mdl-mega-footer__heading {
+  color: black;
+}
+
+.mdl-mega-footer {
+  color: dimgray;
+  background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
+}
+
+.mdl-layout__content {
+  flex: 1 0 auto;
 }
