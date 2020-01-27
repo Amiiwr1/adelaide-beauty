@@ -12,8 +12,8 @@
 }
 
 .home-header-text h1 {
-  border: 4px double lightslategray;
-  padding: 40px;
+  border: 10px double darkslategray;
+  padding: 100px 25px;
 }
 
 .home-header-text p {
@@ -22,19 +22,32 @@
 
 .home-header-text button {
   margin-top: 50px;
-      border: 1px solid lightslategray;
+  border: 1px solid lightslategray;
 
 }
 
-.home-first-section{
+.home-first-section {
   height: 1000px;
   background-color: white;
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
+  .home-header {
+    margin: 8px;
+
+  }
+
+  .home-header-text {
+    margin: auto;
+    width: 100%;
+    position: relative;
+    left: 0;
+  }
+
   .home-header-text h1 {
-    padding: 25px 0;
-    font-size: 3rem;
-}
+    font-size: 3.360rem;
+  }
+
 
 }
+

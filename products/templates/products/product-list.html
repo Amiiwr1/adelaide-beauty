@@ -8,42 +8,112 @@
 {% endblock %}
 {% block content %}
   <div class="product-wrapper">
-  <div class="side-menu">
-  <div class="mdl-grid side-menu-filters">
-    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
-      <div class="first-filter">
-        <h4>first filter</h4>
-
-      </div>
-      <div class="second-filter">
-        <h4>second filter</h4>
-
-      </div>
-    </div>
-    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
-      <div class="third-filter">
-        <h4>third filter</h4>
-      </div>
-      <div class="fourth-filter">
-        <h4>fourth filter</h4>
-      </div>
-    </div>
-
-    </div>
-  </div>
-    <div class="all-products">
-      <div class="divider"><span></span><span>{% trans "All Products" %}</span><span></span></div>
-      <div class="mdl-grid all-product-list">
-        {% for product in product_list %}
-          <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
-
-            {% include "products/snippets/card.html" with instance=product %}
-
+    <div class="product-header">
+      <div class="mdl-grid">
+        <div class="mdl-cell--6-col-desktop product-header-cont">
+          <h1>Enjoy beauty shopping</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+          <div id="arrow-down" class="arrow bounce">
+            <a href="#product-content">
+              <i class="material-icons">
+                keyboard_arrow_down
+              </i>
+            </a>
           </div>
-        {% endfor %}
+        </div>
+        <div class="mdl-cell--6-col-desktop img-cont">
+          <img src="{% static 'products/images/cover-img-product.png' %}">
+        </div>
+      </div>
 
+
+    </div>
+    {#  <div class="side-menu">#}
+    {#  <div class="mdl-grid side-menu-filters">#}
+    {#    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">#}
+    {#      <div class="first-filter">#}
+    {#        <h4>first filter</h4>#}
+    {##}
+    {#      </div>#}
+    {#      <div class="second-filter">#}
+    {#        <h4>second filter</h4>#}
+    {##}
+    {#      </div>#}
+    {#    </div>#}
+    {#    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">#}
+    {#      <div class="third-filter">#}
+    {#        <h4>third filter</h4>#}
+    {#      </div>#}
+    {#      <div class="fourth-filter">#}
+    {#        <h4>fourth filter</h4>#}
+    {#      </div>#}
+    {#    </div>#}
+    {##}
+    {#    </div>#}
+    {#  </div>#}
+    <a name="product-content"></a>
+    <div class="products-content">
+      <div class="new-arrival">
+        <div class="divider"><span></span><span>{% trans "New Arrival" %}</span><span></span></div>
+        <div class="mdl-grid new-arrival-list">
+          {% for new_product in new_arrival %}
+            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+
+              {% include "products/snippets/card.html" with instance=new_product %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+      <div class="product-sales">
+        <div class="divider"><span></span><span>{% trans "Sales" %}</span><span></span></div>
+        <div class="mdl-grid sales-list">
+          {% for sale in sales %}
+            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+
+              {% include "products/snippets/card.html" with instance=new_product %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+      <div class="product-popular">
+        <div class="divider"><span></span><span>{% trans "Populars" %}</span><span></span></div>
+        <div class="mdl-grid popular-list">
+          {% for popular in populars %}
+            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+
+              {% include "products/snippets/card.html" with instance=popular %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+      <div class="all-products">
+        <div class="divider"><span></span><span>{% trans "All Products" %}</span><span></span></div>
+        <div class="mdl-grid all-product-list">
+          {% for product in product_list %}
+            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+
+              {% include "products/snippets/card.html" with instance=product %}
+
+            </div>
+          {% endfor %}
+
+        </div>
       </div>
     </div>
   </div>
 
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static "/products/product.js" %}"></script>
 {% endblock %}

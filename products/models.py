@@ -48,6 +48,7 @@ class Product(models.Model):
     sale = models.BooleanField(default=False)
     popular = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
+    is_new = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 

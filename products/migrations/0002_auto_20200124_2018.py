@@ -6,7 +6,6 @@ import products.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('products', '0001_initial'),
     ]
@@ -31,10 +30,17 @@ class Migration(migrations.Migration):
                 ('active', models.BooleanField(default=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='products', to='products.Category')),
+                ('category',
+                 models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='products',
+                                   to='products.Category')),
             ],
         ),
         migrations.DeleteModel(
             name='Products',
+        ),
+        migrations.AddField(
+            model_name='product',
+            name='is_new',
+            field=models.BooleanField(default=False),
         ),
     ]
