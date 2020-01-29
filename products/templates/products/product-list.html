@@ -28,58 +28,21 @@
 
 
     </div>
-    {#  <div class="side-menu">#}
-    {#  <div class="mdl-grid side-menu-filters">#}
-    {#    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">#}
-    {#      <div class="first-filter">#}
-    {#        <h4>first filter</h4>#}
-    {##}
-    {#      </div>#}
-    {#      <div class="second-filter">#}
-    {#        <h4>second filter</h4>#}
-    {##}
-    {#      </div>#}
-    {#    </div>#}
-    {#    <div class="mdl-cell--6-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">#}
-    {#      <div class="third-filter">#}
-    {#        <h4>third filter</h4>#}
-    {#      </div>#}
-    {#      <div class="fourth-filter">#}
-    {#        <h4>fourth filter</h4>#}
-    {#      </div>#}
-    {#    </div>#}
-    {##}
-    {#    </div>#}
-    {#  </div>#}
     <a name="product-content"></a>
     <div class="products-content">
       <div class="new-arrival">
-        <div class="divider"><span></span><span>{% trans "New Arrival" %}</span><span></span></div>
+        <div class="divider divider-arrival"><span></span><span>{% trans "New Arrival" %}</span><span></span></div>
         <div class="mdl-grid new-arrival-list">
           {% for new_product in new_arrival %}
-            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+            <div class="mdl-cell--3-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet new-arrival-content">
 
-              {% include "products/snippets/card.html" with instance=new_product %}
-
-            </div>
-          {% endfor %}
-
-        </div>
-
-      </div>
-      <div class="product-sales">
-        <div class="divider"><span></span><span>{% trans "Sales" %}</span><span></span></div>
-        <div class="mdl-grid sales-list">
-          {% for sale in sales %}
-            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
-
-              {% include "products/snippets/card.html" with instance=new_product %}
+              {% include "products/snippets/premium-card.html" with instance=new_product %}
 
             </div>
           {% endfor %}
 
         </div>
-
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect new-arrival-more-btn">{% trans "See All" %}</a>
       </div>
       <div class="product-popular">
         <div class="divider"><span></span><span>{% trans "Populars" %}</span><span></span></div>
@@ -93,6 +56,22 @@
           {% endfor %}
 
         </div>
+
+      </div>
+      <div class="product-sales">
+        <div class="divider divider-arrival"><span></span><span>{% trans "Sales" %}</span><span></span></div>
+        <div class="mdl-grid sales-list">
+          {% for sale in sales %}
+
+            <div class="mdl-cell--4-col-desktop mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+
+              {% include "products/snippets/sale-card.html" with instance=sale %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect product-sales-more-btn">{% trans "See All" %}</a>
 
       </div>
       <div class="all-products">

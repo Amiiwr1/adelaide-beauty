@@ -1,0 +1,12 @@
+<div class="prem-card-wrapper">
+  <div class="prem-card-image">
+    <img src="{% if instance.image %}{{ instance.image.url }}{% endif %}">
+    <div class="prem-img-text-cont">
+      <div class="prem-img-text">{{ instance.short_description }}</div>
+    </div>
+  </div>
+  <a class="prem-card-btn mdl-button mdl-js-button mdl-js-ripple-effect">
+    Shop now
+  </a>
+
+</div>

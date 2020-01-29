@@ -6,7 +6,7 @@ from .models import Product, Category
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'short_description', 'price', 'created')
-    list_filter = ('title', 'price')
+    list_filter = ('title', 'price', 'is_new', 'popular', 'sale')
     ordering = ('-created',)
     search_fields = ('title',)
     date_hierarchy = 'created'
