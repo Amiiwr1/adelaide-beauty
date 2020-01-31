@@ -1,0 +1,16 @@
+{% load static %}
+<div class="comment-wrapper">
+  <div class="comment-author-info">
+    <img src="{% static "products/images/author.png" %}"/>
+    <p>{{ instance.author }}</p>
+  </div>
+
+
+  <div class="comment-text">
+    <p>{{ instance.text }}</p>
+  </div>
+
+  <div class="comment-time">
+    <p>{{ instance.created }}</p>
+  </div>
+</div>

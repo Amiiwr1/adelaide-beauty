@@ -1,3 +1,6 @@
+.mdl-layout__content {
+  background: white;
+}
 
 .product-header {
   height: 100vh;
@@ -91,6 +94,7 @@
   margin: 0 10px;
 }
 
+
 .sale-product-old-price {
   text-decoration: line-through;
 }
@@ -168,9 +172,19 @@
 }
 
 .demo-card-square.sale-card-wrapper {
-  width: 270px;
-  height: 480px;
+  width: 280px;
+  height: 510px;
   margin: 55px auto;
+}
+
+.sale-card-price {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sale-card-price span {
+  font-size: 1rem;
+
 }
 
 .products-content {
@@ -436,13 +450,211 @@ i {
 }
 
 .product-price {
-  margin-left: 80px;
+  margin-left: 50px;
 
 }
 
 .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
   background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
   color: slategray;
+}
+
+.carousel-wrapper {
+  height: 400px;
+  position: relative;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 50px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.car-arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 12px;
+}
+
+.car-arrow-prev {
+  left: -30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+}
+
+.car-arrow-next {
+  right: -30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.light {
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .car-arrow, .light .car-arrow {
+    background-size: 10px;
+    background-position: 10px 50%;
+  }
+}
+
+
+/*Select every element*/
+[id^="item"] {
+  display: none;
+}
+
+.item-1 {
+  z-index: 2;
+  opacity: 1;
+  background: url('https://static.pexels.com/photos/6526/sea-beach-holiday-vacation-large.jpg');
+  background-size: cover;
+}
+
+.item-2 {
+  background: url('https://static.pexels.com/photos/6506/alcohol-bar-drinks-party-large.jpg');
+  background-size: cover;
+}
+
+.item-3 {
+  background: url('https://static.pexels.com/photos/6529/lake-kajak-kayak-large.jpg');
+  background-size: cover;
+}
+
+*:target ~ .item-1 {
+  opacity: 0;
+}
+
+#item-1:target ~ .item-1 {
+  opacity: 1;
+}
+
+#item-2:target ~ .item-2, #item-3:target ~ .item-3 {
+  z-index: 3;
+  opacity: 1;
+}
+
+
+.product-detail-img {
+  width: 15%;
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: relative;
+  left: 42.5%;
+
+}
+
+.product-detail-info {
+  text-align: center;
+}
+
+.product-detail-divider {
+  width: 70%;
+  position: relative;
+  left: 15%;
+}
+
+.product-detail-content {
+  text-align: center;
+  padding: 0 150px;
+}
+
+.product-cons {
+  color: darkred;
+}
+
+.product-pros {
+  color: darkgreen;
+}
+
+.product-detail-comments {
+  text-align: center;
+}
+
+.product-detail-comments h3 {
+  font-size: 1.568rem;
+}
+
+.comment-form {
+  left: 3%;
+  width: 60%;
+  margin-bottom: 30px;
+
+}
+
+.comment-submit-btn {
+  position: relative;
+  right: 30%;
+  margin-bottom: 30px;
+}
+
+.product-detail-comment-wrapper {
+  width: 50%;
+  left: 25%;
+  overflow-y: scroll;
+  max-height: 500px;
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+}
+
+.product-detail-comment-wrapper::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+
+}
+
+@supports (-ms-ime-align:auto) {
+  .product-detail-comment-wrapper {
+    overflow-y: unset;
+    overflow-x: unset;
+  }
+}
+
+.hw-left-sec::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+
+}
+
+.comment-wrapper {
+
+  box-shadow: 2px 2px 6px -5px rgba(0, 0, 0, 1);
+  padding: 20px 10px;
+  margin-bottom: 20px;
+}
+
+.comment-time {
+  text-align: left;
+  color: darkgray;
+  padding-top: 30px;
+}
+
+.comment-wrapper p {
+  margin: 0;
+}
+
+.comment-author-info {
+  text-align: left;
+}
+
+.comment-text {
+  text-align: right;
+}
+
+.comment-author-info img {
+  width: 30px;
 }
 
 @media screen and (max-width: 1080px) {
@@ -460,6 +672,10 @@ i {
   .prem-card-image {
     width: 60%;
     height: 60%;
+  }
+
+  .product-detail-content {
+    padding: 0 70px;
   }
 
   .new-arrival-content {
@@ -504,6 +720,20 @@ i {
 }
 
 @media screen and (max-width: 568px) {
+  .product-detail-img {
+    width: 25%;
+    left: 37.5%;
+  }
+
+  .product-detail-info h3 {
+    font-size: 2rem;
+  }
+
+  .product-detail-content {
+    padding: 0 10px;
+  }
+
+
   .demo-card-square.mdl-card.demo-card-square.mdl-card {
     width: 230px;
     height: 420px;
@@ -529,6 +759,11 @@ i {
 }
 
 @media screen and (max-width: 480px) {
+  .product-detail-img {
+    width: 45%;
+    left: 27.5%;
+  }
+
   .product-sales {
     width: 100%;
   }
@@ -551,7 +786,7 @@ i {
   }
 
   .product-price {
-    margin-left: 80px;
+    margin-left: 50px;
   }
 
   .product-buy-btn {

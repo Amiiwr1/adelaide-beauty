@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <img src="{% if instance.image %}{{ instance.image.url }}{% endif %}">
 
@@ -13,6 +14,6 @@
     <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent product-buy-btn">
       Add to cart
     </a>
-    <span class="product-price">{{ instance.price }}</span>
+    <span class="product-price">{% trans "Toman" %} {{ instance.price }}</span>
   </div>
 </div>

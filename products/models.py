@@ -1,5 +1,7 @@
 import random
 import os
+
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -58,3 +60,18 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("products:detail", kwargs={"slug": self.slug})
+
+    @property
+    def approved_comments(self):
+        return self.comments.filter(is_approved=True)
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name="comments")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="comments")
+    text = models.TextField(max_length=620, blank=True, null=True)
+    is_approved = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%s comment for product %s" % (self.author.username, self.product.title)

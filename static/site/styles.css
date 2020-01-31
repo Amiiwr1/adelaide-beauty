@@ -2,6 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 header.mdl-layout__header.mdl-layout__header--scroll {
   background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
   box-shadow: 0 5px 25px 0 rgba(244, 244, 244, 0.1);

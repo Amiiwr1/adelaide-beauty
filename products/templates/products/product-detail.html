@@ -1,3 +1,115 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static %}
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static "/products/styles.css" %}">
+{% endblock %}
+
+
+{% block content %}
+  <div class="product-detail-wrapper">
+    <div class="product-header">
+      <div class="mdl-grid">
+        <div class="mdl-cell--6-col-desktop product-header-cont">
+          <h1>Enjoy beauty shopping</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        </div>
+        <div class="mdl-cell--6-col-desktop img-cont">
+          <img src="{% static 'products/images/cover-img-product.png' %}">
+        </div>
+      </div>
+
+
+    </div>
+    <div class="products-content">
+      <div class="product-detail-img">
+        <img src="{{ product.image.url }}">
+      </div>
+      <div class="product-detail-info">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.short_description }}</p>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent product-buy-btn">
+          Add to cart
+        </a>
+      </div>
+      <hr class="product-detail-divider">
+      <div class="product-detail-content">
+        <div class="mdl-grid">
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-title">
+            <strong>{% trans "Description" %}</strong>
+          </div>
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-item">
+            <p>{% if product.description %}{{ product.description }}{% endif %}</p>
+          </div>
+
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-title">
+            <strong>{% trans "Brand" %}</strong>
+          </div>
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-item">
+            <p>{% if product.brand %}{{ product.brand }}{% endif %}</p>
+          </div>
+
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-title">
+            <strong>{% trans "Pros" %}</strong>
+          </div>
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-item">
+            <p class="product-pros">{% if product.pros %}{{ product.pros }}{% endif %}</p>
+          </div>
+
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-title">
+            <strong>{% trans "Cons" %}</strong>
+          </div>
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-item">
+            <p class="product-cons">{% if product.cons %}{{ product.cons }}{% endif %}</p>
+          </div>
+
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-title">
+            <strong>{% trans "Price" %}</strong>
+          </div>
+          <div
+            class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone product-detail-content-item">
+            <p>{% trans "Toman" %} {% if product.price %}{{ product.price }}{% endif %}</p>
+          </div>
+
+
+        </div>
+      </div>
+      <hr class="product-detail-divider">
+      <div class="product-detail-comments">
+        <h3>{% trans "Comments" %} ({{ product.approved_comments.count }})</h3>
+        <form id="commentForm" method="POST">{% csrf_token %}
+          <div class="mdl-textfield mdl-js-textfield comment-form">
+            {{ form }}
+          </div>
+          <button  onclick="commentPost()" type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect comment-submit-btn">
+            {% trans "Submit" %}
+          </button>
+        </form>
+        <div class="product-detail-comment-wrapper">
+          {% if product.approved_comments %}
+            {% for comment in product.approved_comments %}
+              {% include "products/snippets/comment.html" with instance=comment %}
+            {% endfor %}
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static "products/product.js" %}"></script>
+{% endblock %}
