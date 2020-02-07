@@ -1,0 +1,9 @@
+{% load static i18n %}
+
+<form class="remove-product-form" method="POST" action="{% url 'cart:update' pk=cart.pk %}"
+      data-endpoint="{% url 'cart:update' pk=cart.pk %}" class="form ">{% csrf_token %}
+
+  <input class="cart-item-product-id" type="hidden" name="product_id" value="{{ instance.id }}"/>
+  <button type="submit"
+          class="mdl-button mdl-js-button mdl-js-ripple-effect remove-btn">{% trans "Remove" %}</button>
+</form>

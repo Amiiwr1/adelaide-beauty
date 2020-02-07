@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+{% if is_login %}
+  <form class="form-product-ajax" method="POST" action="{% url 'cart:update' pk=cart.pk %}"
+        data-endpoint="{% url 'cart:update' pk=cart.pk %}"
+        class="form ">{% csrf_token %}
+
+    <input type="hidden" name="product_id" value="{{ product.id }}"/>
+    {% if product in cart.products.all %}
+      <button type="submit"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent product-buy-btn">
+        Remove from cart
+      </button>
+    {% else %}
+      <button type="submit"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent product-buy-btn">
+        Add to cart
+      </button>
+    {% endif %}
+
+  </form>
+{% else %}
+  <a type="submit"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent product-buy-btn">
+    Add to cart
+  </a>
+{% endif %}

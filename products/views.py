@@ -1,9 +1,9 @@
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
-from django.http import JsonResponse
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
+
+from cart.models import Cart
 from .forms import CommentForm
 
 from .models import Product
@@ -23,6 +23,9 @@ class ProductList(ListView):
                 "populars": Product.objects.filter(popular=True)
             }
         )
+        if self.request.user.is_authenticated:
+            cart, created = Cart.objects.get_or_create(defaults={"user": self.request.user}, user=self.request.user)
+            context['cart'] = cart
         return context
 
 

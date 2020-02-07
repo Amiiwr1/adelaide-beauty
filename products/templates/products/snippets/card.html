@@ -9,11 +9,9 @@
 
   <div class="mdl-card__supporting-text product-description">
     {% if instance.short_description %}{{ instance.short_description }}{% endif %}
+    <p class="product-price">{% trans "Toman" %} {{ instance.price }}</p>
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent product-buy-btn">
-      Add to cart
-    </a>
-    <span class="product-price">{% trans "Toman" %} {{ instance.price }}</span>
+    {% include "cart/update-cart.html" with product=instance cart=cart %}
   </div>
 </div>

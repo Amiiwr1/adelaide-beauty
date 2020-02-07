@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static "cart/styles.css" %}">
+{% endblock %}
+
+{% block content %}
+  <div class="cart-detail-wrapper">
+    <div class="cart-detail-content">
+      <div class="cart-detail-title">
+        <h3>{% trans "Items in your cart" %}</h3>
+      </div>
+      <hr>
+
+      {% for product in object.products.all %}
+        <div class="cart-detail-item">
+          <div class="mdl-grid cart-item-grid">
+            <div class="mdl-cell--2-col cart-item-img">
+              <img src="{{ product.image.url }}">
+
+            </div>
+            <div class="mdl-cell--10-col cart-item-info-cont">
+              <div class="cart-item-info">
+                <p>{{ product.title }}</p>
+                <p>{{ product.brand }}</p>
+                <p>Toman {{ product.price }}</p>
+              </div>
+              <div class="cart-detail-item-extra-info">
+                <a href="{{ product.get_absolute_url }}">{% trans "See product page" %}</a>
+                {% include "cart/remove-product.html" with instance=product cart=cart %}
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+      {% endfor %}
+      <div class="mdl-grid checkout-cart">
+        <div class="mdl-cell mdl-cell--6-col">
+          <p><strong>{% trans "Total" %}: Toman {{ cart.total }}</strong></p>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+          <a
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent cart-checkout-btn">
+            {% trans "Checkout" %}
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+{% endblock %}
