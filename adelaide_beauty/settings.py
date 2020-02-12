@@ -32,6 +32,10 @@ INSTALLED_APPS = [
     'home',
     'products',
     'cart',
+    'django_extensions',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +73,7 @@ TEMPLATES = [
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.csrf',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

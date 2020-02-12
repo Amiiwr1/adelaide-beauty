@@ -18,7 +18,9 @@
         <div class="cart-detail-item">
           <div class="mdl-grid cart-item-grid">
             <div class="mdl-cell--2-col cart-item-img">
-              <img src="{{ product.image.url }}">
+              {% if product.image %}
+              <img src="{{ product.image.url }}" alt="{{ product.title }}">
+              {% endif %}
 
             </div>
             <div class="mdl-cell--10-col cart-item-info-cont">

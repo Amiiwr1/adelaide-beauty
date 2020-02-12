@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="sign-up-wrapper">
+    {% if not is_login %}
+      <div class="sign-up-cont">
+        <div class="sign-up-header">
+          <h3>Adelaide Beauty</h3>
+          <p>adelaide beauty slogan goes here !</p>
+        </div>
+        <div class="sign-up-form">
+          <form action="#" method="POST" id="singUpForm"
+                data-action="{% url 'users:register' %}">
+            {% csrf_token %}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-username">
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                id="username"
+                name="username"
+                required
+              >
+              <label class="mdl-textfield__label" for="username">{% trans "Username" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your username.' %}"></span>
+
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-email">
+              <input
+                class="mdl-textfield__input"
+                type="email"
+                id="email"
+                name="email"
+                required
+              >
+              <label class="mdl-textfield__label" for="email">{% trans "Email" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter a valid email.' %}"></span>
+
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-password">
+              <input
+                class="mdl-textfield__input"
+                type="password"
+                id="password"
+                name="password"
+                required
+              >
+              <label class="mdl-textfield__label" for="password">{% trans "Password" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your password.' %}"></span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-first_name">
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                id="first_name"
+                name="first_name"
+                required
+              >
+              <label class="mdl-textfield__label" for="first_name">{% trans "First name" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your first name.' %}"></span>
+
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-last_name">
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                id="last_name"
+                name="last_name"
+                required
+              >
+              <label class="mdl-textfield__label" for="last_name">{% trans "Last name" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your last name.' %}"></span>
+
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-mobile_number">
+              <input
+                type="text"
+                pattern="^(\+98|0|098|0098|98|\+)?9\d{9}$"
+                class="mdl-textfield__input"
+                name="mobile_number"
+                id="mobile_number"
+                maxlength="20"
+                required
+              >
+              <label class="mdl-textfield__label" for="mobile_number">{% trans "Mobile number" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your mobile number.' %}"></span>
+            </div>
+            <button id="signup-snack" type="submit"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              {% trans 'Submit' %}
+            </button>
+            <div id="snack-toast" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+
+          </form>
+
+        </div>
+        <hr>
+        <p>{% trans "By registering in AB I accept all policies" %}</p>
+        <p>{% trans "Already have an account ?" %}</p>
+        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          Login
+        </a>
+      </div>
+    {% else %}
+      <div class="is_signed-up">
+        <h2>You have already signed up !</h2>
+        <a href="{% url 'home:index' %}" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          Back to Homepage
+        </a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'users/js/sign-up.js' %}"></script>
+{% endblock %}

@@ -1,12 +1,12 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import m2m_changed
 
 from products.models import Product
+from users.models import CustomUser
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, null=True, blank=True, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, blank=True)
     total = models.DecimalField(default=0.000, max_digits=100, decimal_places=3)
     updated = models.DateTimeField(auto_now=True)

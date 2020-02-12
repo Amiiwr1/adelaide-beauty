@@ -1,9 +1,9 @@
 import random
 import os
 
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from users.models import CustomUser
 
 
 def get_filename_ext(filepath):
@@ -67,7 +67,7 @@ class Product(models.Model):
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name="comments")
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, related_name="comments")
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="comments")
     text = models.TextField(max_length=620, blank=True, null=True)
     is_approved = models.BooleanField(default=False)
