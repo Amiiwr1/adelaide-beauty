@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="sign-in-wrapper">
+    {% if not is_login %}
+      <div class="sign-in-cont">
+        <div class="sign-in-header">
+          <h3>Adelaide Beauty</h3>
+          <p>adelaide beauty slogan goes here !</p>
+        </div>
+        <div class="sign-in-form">
+          <form id="singInForm" action="#" method="POST" data-action="{% url 'users:login' %}">
+            {% csrf_token %}
+            <div class=" mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-username">
+              <input
+                class="mdl-textfield__input"
+                type="text"
+                id="username"
+                name="username"
+                required
+              >
+              <label class="mdl-textfield__label" for="username">{% trans "Username" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your username.' %}"></span>
+
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="f-password">
+              <input
+                class="mdl-textfield__input"
+                type="password"
+                id="password"
+                name="password"
+                required
+              >
+              <label class="mdl-textfield__label" for="password">{% trans "Password" %}</label>
+              <span class="mdl-textfield__error" data-text="{% trans 'Please enter your password.' %}"></span>
+            </div>
+            <button id="signup-snack" type="submit"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              {% trans 'Login' %}
+            </button>
+            <div id="snack-toast" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+          </form>
+
+        </div>
+        <hr>
+        <p>{% trans "Doesn't have an account yet ?" %}</p>
+        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          {% trans "Sign up" %}
+        </a>
+      </div>
+    {% else %}
+      <div class="is_signed-up">
+        <h2>You have already Logged in !</h2>
+        <a href="{% url 'home:index' %}" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          Back to Homepage
+        </a>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'users/js/sign-in.js' %}"></script>
+{% endblock %}

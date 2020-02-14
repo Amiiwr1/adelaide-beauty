@@ -24,6 +24,10 @@
   padding: 0 45px;
 }
 
+#signin-snack {
+  padding: 0 45px;
+}
+
 .mdl-textfield {
   line-height: 1rem;
   display: block;
@@ -36,9 +40,35 @@
   color: dimgray;
 }
 
+.sign-in-wrapper {
+  padding: 80px 0;
+}
+
+.sign-in-cont {
+  width: 35%;
+  border-radius: 25px;
+  padding: 20px 10px;
+  text-align: center;
+  background: white;
+  margin: auto;
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+
+}
+
+.sign-in-header {
+  border-bottom: 1px lightgray solid;
+  margin: 10px 15px;
+  padding: 10px 0;
+
+}
+
 
 @media screen and (max-width: 1080px) {
   .sign-up-cont {
+    width: 45%;
+  }
+
+  .sign-in-cont {
     width: 45%;
   }
 }
@@ -47,16 +77,31 @@
   .sign-up-cont {
     width: 55%;
   }
+
+  .sign-in-cont {
+    width: 55%;
+  }
 }
 
 @media screen and (max-width: 620px) {
   .sign-up-cont {
     width: 65%;
   }
+
+  .sign-in-cont {
+    width: 65%;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
   .sign-up-cont {
     width: 90%;
   }
+
+  .sign-in-cont {
+    width: 90%;
+  }
 }
+
+
