@@ -705,7 +705,6 @@ i {
 
   .product-header-cont {
     width: 100%;
-    margin-top: 40px;
   }
 
   .arrow {
@@ -796,10 +795,6 @@ i {
 
   .product-header h1 {
     font-size: 3.360rem;
-  }
-
-  .product-header-cont {
-    margin-top: 40px;
   }
 
   .side-menu {

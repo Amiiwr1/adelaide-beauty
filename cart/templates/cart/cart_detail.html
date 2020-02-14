@@ -17,13 +17,13 @@
       {% for product in object.products.all %}
         <div class="cart-detail-item">
           <div class="mdl-grid cart-item-grid">
-            <div class="mdl-cell--2-col cart-item-img">
+            <div class="mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--4-col-phone cart-item-img">
               {% if product.image %}
-              <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
               {% endif %}
 
             </div>
-            <div class="mdl-cell--10-col cart-item-info-cont">
+            <div class="mdl-cell--10-col mdl-cell--6-col-tablet mdl-cell--4-col-phone cart-item-info-cont">
               <div class="cart-item-info">
                 <p>{{ product.title }}</p>
                 <p>{{ product.brand }}</p>

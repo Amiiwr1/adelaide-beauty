@@ -1,3 +1,4 @@
+{% load i18n %}
 <!-- Uses a header that scrolls with the text, rather than staying
   locked at the top -->
 <header class="mdl-layout__header mdl-layout__header--scroll">
@@ -6,32 +7,61 @@
     <span class="mdl-layout-title">Adelaide Beauty</span>
     <!-- Add spacer, to align navigation to the right -->
     <div class="mdl-layout-spacer"></div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-      <label class="mdl-button mdl-js-button mdl-button--icon"
-             for="fixed-header-drawer-exp">
-        <i class="material-icons">search</i>
-      </label>
-      <div class="mdl-textfield__expandable-holder">
-        <input class="mdl-textfield__input" type="text" name="sample"
-               id="fixed-header-drawer-exp">
-      </div>
-    </div>
+
     <!-- Navigation -->
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Projects</a>
-      <a class="mdl-navigation__link" href="">Skills</a>
-      <a class="mdl-navigation__link" href="">About</a>
-      <a class="mdl-navigation__link" href="">Contact</a>
+      {% include "includes/search.html" %}
+      <a class="mdl-navigation__link home-link" href="{% url "home:index" %}">{% trans "Home" %}</a>
+      <a class="mdl-navigation__link products-link" href="{% url "products:list" %}">{% trans "Products" %}</a>
+      <a class="mdl-navigation__link brands-link" href="">{% trans "Brands" %}</a>
+      <a class="mdl-navigation__link categories-link" href="">{% trans "Categories" %}</a>
+      {% if is_login %}
+        <a class="mdl-navigation__link account-link" href="{% url 'users:sign-out' %}">{% trans "Sign out" %}</a>
+      {% else %}
+        <a class="mdl-navigation__link account-link" href="{% url 'users:sign-in' %}">{% trans "Sign in" %}</a>
+        <a class="mdl-navigation__link account-link" href="{% url 'users:sign-up' %}">{% trans "Sign up" %}</a>
+      {% endif %}
+      <a class="mdl-navigation__link cart-link"
+         href="{% if is_login %}{% url 'cart:detail' %}{% else %}{% url "users:sign-in" %}{% endif %}">
+        {% if is_login %}
+          <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{ request.session.cart_items }}">
+            shopping_basket
+          </div>
+        {% else %}
+          <i class="material-icons">
+            shopping_basket
+          </i>
+        {% endif %}
+      </a>
+
     </nav>
   </div>
 </header>
 <div class="mdl-layout__drawer">
   <span class="mdl-layout-title">Adelaide Beauty</span>
   <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" href="">Projects</a>
-    <a class="mdl-navigation__link" href="">Skills</a>
-    <a class="mdl-navigation__link" href="">About</a>
-    <a class="mdl-navigation__link" href="">Contact</a>
+    <a class="mdl-navigation__link home-link" href="{% url "home:index" %}">{% trans "Home" %}</a>
+    <a class="mdl-navigation__link products-link" href="{% url "products:list" %}">{% trans "Products" %}</a>
+    <a class="mdl-navigation__link brands-link" href="">{% trans "Brands" %}</a>
+    <a class="mdl-navigation__link categories-link" href="">{% trans "Categories" %}</a>
+    {% if is_login %}
+      <a class="mdl-navigation__link" href="{% url 'users:sign-out' %}">{% trans "Sign out" %}</a>
+    {% else %}
+      <a class="mdl-navigation__link" href="{% url 'users:sign-in' %}">{% trans "Sign in" %}</a>
+      <a class="mdl-navigation__link" href="{% url 'users:sign-up' %}">{% trans "Sign up" %}</a>
+    {% endif %}
+    <a class="mdl-navigation__link cart-link"
+       href="{% if is_login %}{% url 'cart:detail' %}{% else %}{% url "users:sign-in" %}{% endif %}">
+      {% if is_login %}
+        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{ request.session.cart_items }}">
+          shopping_basket
+        </div>
+      {% else %}
+        <i class="material-icons">
+          shopping_basket
+        </i>
+      {% endif %}
+    </a>
+
   </nav>
 </div>

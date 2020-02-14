@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.http import Http404
 
 from django.urls import reverse
@@ -6,6 +5,7 @@ from django.views import generic
 
 from cart.models import Cart
 from products.models import Product
+from users.models import CustomUser
 
 
 class CartDetail(generic.DetailView):
@@ -13,8 +13,8 @@ class CartDetail(generic.DetailView):
     model = Cart
 
     def get_object(self, queryset=None):
-        if User.objects.filter(id=self.request.user.id).exists():
-            user = User.objects.filter(id=self.request.user.id).get()
+        if CustomUser.objects.filter(id=self.request.user.id).exists():
+            user = CustomUser.objects.filter(id=self.request.user.id).get()
             cart, created = Cart.objects.get_or_create(defaults={"user": user}, user=user)
             return cart
         raise Http404
@@ -36,6 +36,7 @@ class CartUpdate(generic.UpdateView):
             else:
                 cart.products.add(product)
                 cart.save()
+            request.session['cart_items'] = cart.products.count()
             form = self.get_form()
             if form.is_valid():
                 return self.form_valid(form)

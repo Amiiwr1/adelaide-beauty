@@ -144,3 +144,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "adelaide_static", "static
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "adelaide_static", "media_root")
+
+
+LOGOUT_REDIRECT_URL = 'users:sign-in'

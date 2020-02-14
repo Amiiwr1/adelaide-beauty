@@ -2,6 +2,9 @@ html {
   scroll-behavior: smooth;
 }
 
+.mdl-layout__header {
+  background: none;
+}
 
 header.mdl-layout__header.mdl-layout__header--scroll {
   background-image: linear-gradient(to left, #9ef9ff, #ffc9ff);
@@ -34,3 +37,45 @@ body > div > div > div > div.mdl-layout__drawer-button > i {
 .mdl-layout__content {
   flex: 1 0 auto;
 }
+
+.search-icon {
+  color: black;
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header {
+    display: block;
+  }
+
+}
+
+@media screen and (max-width: 960px) {
+  .mdl-navigation__link.account-link {
+    display: none;
+  }
+
+
+}
+
+@media screen and (max-width: 768px) {
+  .mdl-navigation__link.brands-link, .mdl-navigation__link.categories-link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mdl-navigation__link.products-link, .mdl-navigation__link.cart-link, .mdl-navigation__link.home-link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mdl-layout__header-row .mdl-layout-title {
+    display: none;
+  }
+}
+
+
+
+
+

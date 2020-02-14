@@ -13,7 +13,8 @@
 
 .home-header-text h1 {
   border: 10px double darkslategray;
-  padding: 100px 25px;
+  padding: 80px 25px;
+
 }
 
 .home-header-text p {
@@ -32,6 +33,11 @@
 }
 
 @media screen and (max-width: 480px) {
+  .mdl-layout__header {
+    height: 0;
+    min-height: 0;
+  }
+
   .home-header {
     margin: 8px;
 
@@ -46,6 +52,10 @@
 
   .home-header-text h1 {
     font-size: 3.360rem;
+  }
+
+  .home-header-text p {
+    margin-top: 0;
   }
 
 
